@@ -1,0 +1,30 @@
+{
+  "name": "shooter-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "webpack --mode production",
+    "watch": "webpack --watch",
+    "dev": "webpack --mode development",
+    "start": "webpack serve --open",
+    "watch-jest": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZawadiSumba66/shooter-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZawadiSumba66/shooter-game/issues"
+  },
+  "homepage": "https://github.com/ZawadiSumba66/shooter-game#readme",
+  "devDependencies": {
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
