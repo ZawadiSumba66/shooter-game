@@ -23,8 +23,13 @@
   },
   "homepage": "https://github.com/ZawadiSumba66/shooter-game#readme",
   "devDependencies": {
+    "babel-core": "6",
+    "babel-loader": "^7.0.0",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "phaser": "^3.54.0"
   }
 }
