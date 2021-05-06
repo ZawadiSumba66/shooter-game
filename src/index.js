@@ -1,7 +1,8 @@
 import SceneMainMenu from './js/SceneMainMenu';
+// import Entities from './entities'
 import SceneMain from './js/SceneMain';
 import SceneGameOver from './js/SceneGameOver';
-import Phaser from 'phaser'
+import 'phaser'
 var config = {
     type: Phaser.WEBGL,
     width: 480,
@@ -15,6 +16,7 @@ var config = {
     },
     scene: [
         SceneMainMenu,
+        // Entities,
         SceneMain,
         SceneGameOver
     ],
