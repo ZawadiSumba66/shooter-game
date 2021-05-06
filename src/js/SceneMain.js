@@ -25,9 +25,9 @@ export default class SceneMain extends Phaser.Scene {
           frameWidth: 16,
           frameHeight: 16
         });
-        this.load.audio("sndExplode0", "content/sndExplode0.wav");
-        this.load.audio("sndExplode1", "content/sndExplode1.wav");
-        this.load.audio("sndLaser", "content/sndLaser.wav");
+        this.load.audio("sndExplode0", "assets/sndExplode0.wav");
+        this.load.audio("sndExplode1", "assets/sndExplode1.wav");
+        this.load.audio("sndLaser", "assets/sndLaser.wav");
     }
   
     create() {
