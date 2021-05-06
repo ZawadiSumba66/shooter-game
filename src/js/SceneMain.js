@@ -1,34 +1,50 @@
 import 'phaser'
+//entities
+import Player from '../entities/Player';
+import GunShip from '../entities/GunShip'
+//assets
+import sprBg0 from "../assets/spr_stars02.png"
+import sprExplosion from "../assets/sprExplosion.png"
+import sprEnemy0 from "../assets/sprEnemy0.png"
+import sprEnemy1 from "../assets/sprEnemy1.png"
+import sprEnemy2 from "../assets/sprEnemy2.png"
+import sprLaserEnemy0 from "../assets/sprLaserEnemy0.png"
+import sprLaserPlayer from  "../assets/sprLaserPlayer.png";
+import sprPlayer from "../assets/sprPlayer.png"
+import sndExplode0 from "../assets/sndExplode0.mp3";
+import sndExplode1 from "../assets/sndExplode1.mp3";
+import sndLaser from "../assets/sndLaser.mp3";
+
 export default class SceneMain extends Phaser.Scene {
     constructor() {
       super({ key: "SceneMain" });
     }
 
     preload() {
-        this.load.image("sprBg0", "../assets/spr_stars0 2.png");
+        this.load.image("sprBg0", sprBg0);
         // this.load.image("sprBg1", "assets/sprBg1.png");
-        this.load.spritesheet("sprExplosion", "../assets/sprExplosion.png", {
+        this.load.spritesheet("sprExplosion", sprExplosion, {
           frameWidth: 32,
           frameHeight: 32
         });
-        this.load.spritesheet("sprEnemy0", "../assets/sprEnemy0.png", {
+        this.load.spritesheet("sprEnemy0", sprEnemy0, {
           frameWidth: 16,
           frameHeight: 16
         });
-        this.load.image("sprEnemy1", "../assets/sprEnemy1.png");
-        this.load.spritesheet("sprEnemy2", "../assets/sprEnemy2.png", {
+        this.load.image("sprEnemy1", sprEnemy1);
+        this.load.spritesheet("sprEnemy2", sprEnemy2, {
           frameWidth: 16,
           frameHeight: 16
         });
-        this.load.image("sprLaserEnemy0", "../assets/sprLaserEnemy0.png");
-        this.load.image("sprLaserPlayer", "../assets/sprLaserPlayer.png");
-        this.load.spritesheet("sprPlayer", "../assets/sprPlayer.png", {
+        this.load.image("sprLaserEnemy0", sprLaserEnemy0);
+        this.load.image("sprLaserPlayer", sprLaserPlayer);
+        this.load.spritesheet("sprPlayer", sprPlayer, {
           frameWidth: 16,
           frameHeight: 16
         });
-        this.load.audio("sndExplode0", "../assets/sndExplode0.wav");
-        this.load.audio("sndExplode1", "../assets/sndExplode1.wav");
-        this.load.audio("sndLaser", "../assets/sndLaser.wav");
+        this.load.audio("sndExplode0", sndExplode0);
+        this.load.audio("sndExplode1", sndExplode1);
+        this.load.audio("sndLaser", sndLaser);
     }
   
     create() {
@@ -75,11 +91,27 @@ export default class SceneMain extends Phaser.Scene {
         "sprPlayer"
       ); 
 
-      this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-      this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-      this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-      this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+      this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+      this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+      this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+      this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
       this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+      this.enemies = this.add.group();
+      this.enemyLasers = this.add.group();
+      this.playerLasers = this.add.group();
+      this.time.addEvent({
+        delay: 100,
+        callback: function() {
+          var enemy = new GunShip(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0
+          );
+          this.enemies.add(enemy);
+        },
+        callbackScope: this,
+        loop: true
+      });
     }
     update () {
       this.player.update();
