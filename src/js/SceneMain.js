@@ -4,6 +4,7 @@ import Player from '../entities/Player';
 import GunShip from '../entities/GunShip'
 import ChaserShip from '../entities/ChaserShip'
 import CarrierShip from '../entities/CarrierShip'
+import ScrollingBackground from '../entities/SrollingBackground'
 //assets
 import sprBg0 from "../assets/spr_stars02.png"
 import sprExplosion from "../assets/sprExplosion.png"
@@ -85,7 +86,11 @@ export default class SceneMain extends Phaser.Scene {
         ],
         laser: this.sound.add("sndLaser")
       };
-
+      this.backgrounds = [];
+        for (var i = 0; i < 5; i++) { // create five scrolling backgrounds
+          var bg = new ScrollingBackground(this, "sprBg0", i * 10);
+          this.backgrounds.push(bg);
+        }
       this.player = new Player(
         this,
         this.game.config.width * 0.5,
