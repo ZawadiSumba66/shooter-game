@@ -17,11 +17,13 @@ import sprPlayer from "../assets/sprPlayer.png"
 import sndExplode0 from "../assets/sndExplode0.mp3";
 import sndExplode1 from "../assets/sndExplode1.mp3";
 import sndLaser from "../assets/sndLaser.mp3";
-
+var score = 0;
 export default class SceneMain extends Phaser.Scene {
     constructor() {
       super({ key: "SceneMain" });
     }
+
+   
 
     preload() {
         this.load.image("sprBg0", sprBg0);
@@ -121,6 +123,7 @@ export default class SceneMain extends Phaser.Scene {
             !enemy.getData("isDead")) {
           player.explode(false);
           enemy.explode(true);
+          player.onDeath();
         }
       });
       this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
@@ -128,6 +131,7 @@ export default class SceneMain extends Phaser.Scene {
             !laser.getData("isDead")) {
           player.explode(false);
           laser.destroy();
+          player.onDeath();
         }
       });
       this.time.addEvent({
