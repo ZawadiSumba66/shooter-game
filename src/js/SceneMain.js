@@ -1,4 +1,4 @@
-import 'phaser'
+import Phaser from 'phaser'
 //entities
 import Player from '../entities/Player';
 import GunShip from '../entities/GunShip'
@@ -101,6 +101,30 @@ export default class SceneMain extends Phaser.Scene {
       this.enemies = this.add.group();
       this.enemyLasers = this.add.group();
       this.playerLasers = this.add.group();
+
+      this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
+        if (enemy) {
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
+          enemy.explode(true);
+          playerLaser.destroy();
+        }
+      });
+      this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
+        if (!player.getData("isDead") &&
+            !enemy.getData("isDead")) {
+          player.explode(false);
+          enemy.explode(true);
+        }
+      });
+      this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
+        if (!player.getData("isDead") &&
+            !laser.getData("isDead")) {
+          player.explode(false);
+          laser.destroy();
+        }
+      });
       this.time.addEvent({
         delay: 1000,
         callback: function() {
@@ -141,6 +165,7 @@ export default class SceneMain extends Phaser.Scene {
       });
     }
     update () {
+      if (!this.player.getData("isDead")) {
       this.player.update();
 
       if (this.keyW.isDown) {
@@ -163,10 +188,24 @@ export default class SceneMain extends Phaser.Scene {
         this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
         this.player.setData("isShooting", false);
       }
+    }
       for (var i = 0; i < this.enemies.getChildren().length; i++) {
         var enemy = this.enemies.getChildren()[i];
   
         enemy.update();
+        if (enemy.x < -enemy.displayWidth ||
+          enemy.x > this.game.config.width + enemy.displayWidth ||
+          enemy.y < -enemy.displayHeight * 4 ||
+          enemy.y > this.game.config.height + enemy.displayHeight) {
+      
+          if (enemy) {
+            if (enemy.onDestroy !== undefined) {
+              enemy.onDestroy();
+            }
+      
+            enemy.destroy();
+          }
+      }
       }
     }
     getEnemiesByType(type) {

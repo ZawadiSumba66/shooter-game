@@ -1,5 +1,4 @@
 import SceneMainMenu from './js/SceneMainMenu';
-// import Entities from './entities'
 import SceneMain from './js/SceneMain';
 import SceneGameOver from './js/SceneGameOver';
 import 'phaser'
@@ -16,7 +15,6 @@ var config = {
     },
     scene: [
         SceneMainMenu,
-        // Entities,
         SceneMain,
         SceneGameOver
     ],
