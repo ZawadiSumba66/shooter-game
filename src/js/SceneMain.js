@@ -18,6 +18,7 @@ import sndExplode0 from "../assets/sndExplode0.mp3";
 import sndExplode1 from "../assets/sndExplode1.mp3";
 import sndLaser from "../assets/sndLaser.mp3";
 var score = 0;
+var scoreText;
 export default class SceneMain extends Phaser.Scene {
     constructor() {
       super({ key: "SceneMain" });
@@ -53,6 +54,15 @@ export default class SceneMain extends Phaser.Scene {
     }
   
     create() {
+        scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fb8500'}, {
+        fontFamily: 'monospace',
+        fontSize: 48,
+        fontStyle: 'bold',
+        color: '#fb8500',
+        align: 'center'
+      });
+      
+
       this.anims.create({
         key: "sprEnemy0",
         frames: this.anims.generateFrameNumbers("sprEnemy0"),
@@ -116,6 +126,8 @@ export default class SceneMain extends Phaser.Scene {
           }
           enemy.explode(true);
           playerLaser.destroy();
+          score += 10;
+          scoreText.setText('Score: ' + score);
         }
       });
       this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
