@@ -51,15 +51,22 @@ export default class SceneMainMenu extends Phaser.Scene {
 
       this.btnPlay.setInteractive();
       this.btnAbout.setInteractive();
+      this.btnCredits.setInteractive();
+      
+      this.btnPlay.on("pointerup", function() {
+        this.btnPlay.setTexture("sprBtnPlay");
+        this.scene.start("SceneMain");
+      }, this);
+
+      this.btnCredits.on("pointerup", function() {
+        this.btnPlay.setTexture("sprBtnCredits");
+        this.scene.start("SceneLeaderBoard");
+      }, this);
+
 
       this.btnAbout.on("pointerup", function() {
         this.btnPlay.setTexture("sprBtnAbout");
         this.scene.start("SceneAbout");
-      }, this);
-
-      this.btnPlay.on("pointerup", function() {
-        this.btnPlay.setTexture("sprBtnPlay");
-        this.scene.start("SceneMain");
       }, this);
     }
     // update() {

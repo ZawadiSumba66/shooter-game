@@ -125,7 +125,7 @@ export default class SceneMain extends Phaser.Scene {
             enemy.onDestroy();
           }
           score += 10;
-          scoreText.setText('Score: ' + score);
+          scoreText.setText('Score: ' + score);      
           enemy.explode(true);
           playerLaser.destroy();
           

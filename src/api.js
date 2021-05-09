@@ -2,7 +2,7 @@ let url ='https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/Z
 const getScores = async() =>{
     const response = fetch(url)
     const data = await response.json();
-    return data
+    return data.sort((a, b) => (a.score > b.score ? -1 : 1)).slice(0, 5);
 }
 
 const setScores = async()=>{

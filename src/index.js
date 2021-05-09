@@ -1,5 +1,6 @@
 import SceneMainMenu from './js/SceneMainMenu';
 import SceneMain from './js/SceneMain';
+import SceneLeaderBoard from './js/SceneLeaderBoard';
 import SceneGameOver from './js/SceneGameOver';
 import 'phaser'
 var config = {
@@ -16,6 +17,7 @@ var config = {
     scene: [
         SceneMainMenu,
         SceneMain,
+        SceneLeaderBoard,
         SceneGameOver
     ],
     pixelArt: true,
