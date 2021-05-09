@@ -54,7 +54,7 @@ export default class SceneMain extends Phaser.Scene {
     }
   
     create() {
-        scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fb8500'}, {
+        scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fff'}, {
         fontFamily: 'monospace',
         fontSize: 48,
         fontStyle: 'bold',
@@ -124,10 +124,11 @@ export default class SceneMain extends Phaser.Scene {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
           }
-          enemy.explode(true);
-          playerLaser.destroy();
           score += 10;
           scoreText.setText('Score: ' + score);
+          enemy.explode(true);
+          playerLaser.destroy();
+          
         }
       });
       this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
