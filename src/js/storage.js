@@ -14,4 +14,11 @@
   return result;
  }
 
- export {getLocalScores,setLocalScores }
+ const storeScores = (score) => {
+  const localScoreArr = getLocalScores();
+  localScoreArr[0] = score;
+  localScoreArr[1] = Math.max(...localScoreArr);
+  setLocalScores(localScoreArr);
+};
+
+ export {getLocalScores,setLocalScores, storeScores}

@@ -31,6 +31,15 @@ export default class SceneMainMenu extends Phaser.Scene {
         var bg = new ScrollingBackground(this, "sprBg0", i * 10);
         this.backgrounds.push(bg);
       }
+      this.title = this.add.text(this.game.config.width * 0.5, 128, "SPACE INVADERS", {
+        fontFamily: 'monospace',
+        fontSize: 48,
+        fontStyle: 'bold',
+        color: '#fb8500',
+        align: 'center'
+    });
+    this.title.setOrigin(0.5);
+
       this.btnPlay = this.add.sprite(
         this.game.config.width * 0.5,
         this.game.config.height * 0.3,

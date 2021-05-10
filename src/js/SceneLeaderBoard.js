@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import ScrollingBackground from '../entities/SrollingBackground'
+import {getScores} from './api.js'
 export default class SceneLeaderBoard extends Phaser.Scene {
     constructor() {
         super({ key: "SceneLeaderBoard" });
@@ -31,7 +32,7 @@ export default class SceneLeaderBoard extends Phaser.Scene {
             this.backgrounds.push(bg);
         }
 
-        // this.getScores()
+        this.allScores()
     }
     async allScores() {
         const data = await getScores()
@@ -40,9 +41,9 @@ export default class SceneLeaderBoard extends Phaser.Scene {
                 `${index + 1}. ${elem.user}: ${elem.score}`,
                 {
                     fontFamily: 'monospace',
-                    fontSize: 48,
+                    fontSize: 24,
                     fontStyle: 'bold',
-                    color: '#fb8500',
+                    color: '#fff',
                     align: 'center'
                 });
 

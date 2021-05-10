@@ -54,13 +54,13 @@ export default class SceneMain extends Phaser.Scene {
     }
   
     create() {
-        scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fff'}, {
-        fontFamily: 'monospace',
-        fontSize: 48,
-        fontStyle: 'bold',
-        color: '#fb8500',
-        align: 'center'
-      });
+      //   scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fff'}, {
+      //   fontFamily: 'monospace',
+      //   fontSize: 48,
+      //   fontStyle: 'bold',
+      //   color: '#fb8500',
+      //   align: 'center'
+      // });
       
 
       this.anims.create({
@@ -103,12 +103,8 @@ export default class SceneMain extends Phaser.Scene {
           var bg = new ScrollingBackground(this, "sprBg0", i * 10);
           this.backgrounds.push(bg);
         }
-      this.player = new Player(
-        this,
-        this.game.config.width * 0.5,
-        this.game.config.height * 0.5,
-        "sprPlayer"
-      ); 
+        
+        
 
       this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
       this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
@@ -119,16 +115,31 @@ export default class SceneMain extends Phaser.Scene {
       this.enemyLasers = this.add.group();
       this.playerLasers = this.add.group();
 
+      this.player = new Player(
+        this,
+        this.game.config.width * 0.5,
+        this.game.config.height * 0.5,
+        "sprPlayer"
+      ); 
+
+    this.scoreScene = this.add.text(
+      this.game.config.width * 0.025,
+      this.game.config.height * 0.925,
+      `Score: ${this.player.getData('score')}`,
+      {
+        color: '#fff',
+        fontSize: '32px',
+      },
+    );
+
       this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
-        if (enemy) {
+        if (enemy ) {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
           }
-          score += 10;
-          scoreText.setText('Score: ' + score);      
+          this.player.setScore(enemy.getData('score')); 
           enemy.explode(true);
           playerLaser.destroy();
-          
         }
       });
       this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
@@ -187,6 +198,7 @@ export default class SceneMain extends Phaser.Scene {
       });
     }
     update () {
+      this.scoreScene.text = `Score: ${this.player.getData('score')}`;
       if (!this.player.getData("isDead")) {
       this.player.update();
 
