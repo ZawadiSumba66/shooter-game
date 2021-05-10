@@ -1,13 +1,18 @@
 import SceneMainMenu from './js/SceneMainMenu';
 import SceneMain from './js/SceneMain';
 import SceneLeaderBoard from './js/SceneLeaderBoard';
+import SceneAbout from './js/SceneAbout'
 import SceneGameOver from './js/SceneGameOver';
-import 'phaser'
+import Phaser from 'phaser'
 var config = {
     type: Phaser.WEBGL,
+    parent: 'content',
     width: 480,
     height: 640,
     backgroundColor: "black",
+    dom: {
+      createContainer: true,
+    },
     physics: {
       default: "arcade",
       arcade: {
@@ -18,6 +23,7 @@ var config = {
         SceneMainMenu,
         SceneMain,
         SceneLeaderBoard,
+        SceneAbout,
         SceneGameOver
     ],
     pixelArt: true,
