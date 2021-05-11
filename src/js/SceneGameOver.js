@@ -36,6 +36,12 @@ export default class SceneGameOver extends Phaser.Scene {
       this.scene.start('SceneMain');
     }, this);
 
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
+      const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
+      this.backgrounds.push(bg);
+    }
+
     this.userName = '';
     this.scores = getLocalScores();
     const div = document.createElement('div');
@@ -44,13 +50,6 @@ export default class SceneGameOver extends Phaser.Scene {
     input.placeholder = 'Enter your name';
     const submitBtn = document.createElement('button');
     submitBtn.innerHTML = 'Submit';
-
-
-    this.backgrounds = [];
-    for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
-      const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
-      this.backgrounds.push(bg);
-    }
 
     submitBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -65,7 +64,7 @@ export default class SceneGameOver extends Phaser.Scene {
     div.appendChild(submitBtn);
 
     this.add.dom(
-      this.game.config.width * 0.3,
+      this.game.config.width * 0.5,
       this.game.config.height * 0.8,
       div,
     );
