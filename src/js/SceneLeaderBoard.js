@@ -19,7 +19,7 @@ export default class SceneLeaderBoard extends Phaser.Scene {
 
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.height * 0.8,
       'sprBtnPlay',
     );
     this.btnPlay.setInteractive();
