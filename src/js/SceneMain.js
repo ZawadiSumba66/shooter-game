@@ -18,13 +18,11 @@ import sndExplode0 from '../assets/sndExplode0.mp3';
 import sndExplode1 from '../assets/sndExplode1.mp3';
 import sndLaser from '../assets/sndLaser.mp3';
 
-let score=0;
-let scoreText;
 export default class SceneMain extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneMain' });
   }
- 
+
   preload() {
     this.load.image('sprBg0', sprBg0);
     // this.load.image("sprBg1", "assets/sprBg1.png");
@@ -130,7 +128,7 @@ export default class SceneMain extends Phaser.Scene {
       },
     );
 
-    this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) =>{
+    this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();

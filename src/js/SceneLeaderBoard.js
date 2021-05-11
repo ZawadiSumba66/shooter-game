@@ -38,31 +38,32 @@ export default class SceneLeaderBoard extends Phaser.Scene {
   }
 
   async allScores() {
-    try{
-    const data = await getScores();
-    data.forEach((elem, index) => {
+    try {
+      const data = await getScores();
+      data.forEach((elem, index) => {
+        this.add.text(
+          this.game.config.width * 0.25,
+          this.game.config.height * 0.35 + index * 50,
+          `${index + 1}. ${elem.user}: ${elem.score}`,
+          {
+            fontSize: 24,
+            color: '#fff',
+            align: 'center',
+          },
+        );
+      });
+    } catch {
       this.add.text(
-        this.game.config.width * 0.25,
-        this.game.config.height * 0.35 + index * 50,
-        `${index + 1}. ${elem.user}: ${elem.score}`,
+        this.game.config.width * 0.35,
+        this.game.config.height * 0.35,
+        'Sorry score data is unable to get',
         {
-          fontSize: 24,
           color: '#fff',
-          align: 'center',
-        });
-    });
-  }catch{
-    this.add.text(
-      this.game.config.width * 0.35,
-      this.game.config.height * 0.35,
-      'Sorry score data is unable to get',
-      {
-        color: '#fff',
-        fontFamily: 'sans-serif',
-        fontSize: '20px',
-        lineHeight: 1.3,
-      },
-    );
-  }
+          fontFamily: 'sans-serif',
+          fontSize: '20px',
+          lineHeight: 1.3,
+        },
+      );
+    }
   }
 }
