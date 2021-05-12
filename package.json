@@ -23,8 +23,24 @@
   },
   "homepage": "https://github.com/ZawadiSumba66/shooter-game#readme",
   "devDependencies": {
-    "webpack": "^5.36.2",
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1",
+    "babel-loader": "^7.1.5",
+    "copy-webpack-plugin": "^8.1.1",
+    "css-loader": "^5.2.4",
+    "file-loader": "^6.2.0",
+    "image-webpack-loader": "^7.0.1",
+    "jest": "^26.6.3",
+    "jest-canvas-mock": "^2.3.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.37.0",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "canvas": "^2.7.0",
+    "phaser": "^3.54.0",
+    "regenerator-runtime": "^0.13.7"
   }
 }
