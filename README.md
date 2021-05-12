@@ -1,16 +1,17 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 # SPACE INVADERS
 
-This is a simple video shooting game implemented with phaser
+This is a simple video shooting game implemented with phaser 3.
 
 ## Built With
 
 - JavaScript
-- CSS
 - Phaser
 - Jest
 - Webpack
 - Babel
+- Axios
+- HTML
 
 33 Screenshot
 
@@ -21,12 +22,19 @@ This is a simple video shooting game implemented with phaser
 [Live link](https://compassionate-newton-289538.netlify.app/)
 
 ## How to play
-You are the pilot of a spaceship (maybe one among dozens), and your task is destroy all the enemies that you can for saving the Earth. In order to comply with this important duty, you can drive the spaceship and make it avoid the enemies'shots(lasers) using arrow keys (🡱🡳🡰🡲) and shoot the enemies spacebar.
+Play with the Arrows:
 
-Your enemies include a carrier ship,chasership and gunship.
+  - ARROW UP move you UP
+  - ARROW DOWN move you DOWN
+  - ARROW LEFT move you LEFT
+  - ARROW RIGHT move you RIGHT
 
+  - And press SPACE to SHOOT
 
-When you click on New Game, the spaceship will start in the bottom of the screen, and the enemies will come from the top with differents velocities.
+## Tests
+
+Run ``npm run test`` for the tests implemented
+
 
 ## Getting Started
 
@@ -36,10 +44,10 @@ When you click on New Game, the spaceship will start in the bottom of the screen
 - On the terminal run:
   - `` npm install`` to get a copy of the packages in your local environment
   - ``npm run watch`` to run webpack that will intergrate all changes each and every time you make one
-  - ``npm run start`` to start the server
-- Open the app in your local host server while on the `todo-app` directory
+  - ``npm run start`` to start the server which will open on `localhost:8080`
+- Open the app in your local host server while on the `shooter-game` directory
 
-## Authors
+## Author
 
 👤 **Rose Sumba**
 
@@ -56,6 +64,10 @@ Feel free to check the [issues page](issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
+
+## Acknowledgments 🚀
+
+- https://opengameart.org/
 
 ## 📝 License
 
