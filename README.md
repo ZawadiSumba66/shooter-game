@@ -18,8 +18,7 @@ This is a simple video shooting game implemented with phaser 3.
 ![space invaders](src/assets/Screenshot.png)
 
 ## Live Demo
-
-[Live link](https://compassionate-newton-289538.netlify.app/)
+[Live demo link](https://compassionate-newton-289538.netlify.app/)
 
 ## How to play
 Play with the Arrows:
@@ -30,6 +29,11 @@ Play with the Arrows:
   - ARROW RIGHT move you RIGHT
 
   - And press SPACE to SHOOT
+
+## Game Design Document
+
+- [Game Design Document](./game-design.md)
+
 
 ## Tests
 
