@@ -1,0 +1,8 @@
+input {
+  border: 2px solid #fff;
+}
+
+.my-form {
+  display: flex;
+  flex-direction: column;
+}

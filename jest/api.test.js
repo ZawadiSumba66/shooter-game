@@ -18,6 +18,8 @@ describe('getScores', () => {
     expect(res.length).toBe(2);
     expect(res[0].user).toBe('peter');
     expect(res[0].score).toBe(340);
+    expect(res[0].user).not.toBe('mary');
+    expect(res[0].score).not.toBe(300);
   });
 });
 
