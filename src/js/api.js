@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import 'regenerator-runtime'
 const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/jG08FYAVYjOAbHm0zNyx/scores/';
 
 const setScores = async (player, scores) => {
@@ -11,7 +11,7 @@ const setScores = async (player, scores) => {
       },
     )
     .then((response) => response.data)
-    .catch((error) => error);
+    .catch((error) => error); 
   return data;
 };
 
