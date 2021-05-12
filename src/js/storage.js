@@ -1,4 +1,5 @@
-import 'regenerator-runtime'
+import 'regenerator-runtime';
+
 const setLocalScores = (score) => {
   localStorage.setItem('scores', JSON.stringify(score));
 };

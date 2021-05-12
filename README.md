@@ -34,11 +34,9 @@ Play with the Arrows:
 
 - [Game Design Document](./game-design.md)
 
-
 ## Tests
 
 Run ``npm run test`` for the tests implemented
-
 
 ## Getting Started
 
@@ -63,7 +61,7 @@ Run ``npm run test`` for the tests implemented
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/ZawadiSumba66/shooter-game/issues/).
 
 ## Show your support
 

@@ -62,7 +62,7 @@ export default class SceneGameOver extends Phaser.Scene {
     });
     div.appendChild(input);
     div.appendChild(submitBtn);
-    div.classList.add('my-form')
+    div.classList.add('my-form');
     this.add.dom(
       this.game.config.width * 0.5,
       this.game.config.height * 0.8,
