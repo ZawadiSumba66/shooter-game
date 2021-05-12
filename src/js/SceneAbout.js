@@ -24,7 +24,8 @@ export default class SceneAbout extends Phaser.Scene {
     const div = document.createElement('div');
     div.classList.add('about-section');
     div.innerHTML = `<p>Lets play this adventurous game created with phaser its going to be fun and we will enjoy it</p>
-    <p>Get to enjoy the game and showcase your agility through obstacles thrown at you</p>`;
+    <p>Get to enjoy the game and showcase your agility through obstacles thrown at you</p> 
+    <p> Use the up, down, left and right arrows to navigate the spaceship and avoid the enemies. To spawn the enemies, use the spacebar<p> `;
 
     this.add.dom(this.game.config.width * 0.5, 250, div, {
       fontFamily: 'monospace',
@@ -36,7 +37,7 @@ export default class SceneAbout extends Phaser.Scene {
 
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.height * 0.7,
       'sprBtnPlay',
     );
 
