@@ -2,13 +2,15 @@ import Phaser from 'phaser';
 import ScrollingBackground from '../entities/SrollingBackground';
 import { getLocalScores } from './storage';
 import { setScores } from './api';
-
 export default class SceneGameOver extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneGameOver' });
   }
 
   create() {
+
+    this.song = this.sound.add('song', { volume: 0.1, loop: true });
+    this.song.play();
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
       fontFamily: 'monospace',
       fontSize: 48,
@@ -28,12 +30,13 @@ export default class SceneGameOver extends Phaser.Scene {
       this.game.config.height * 0.5,
       'sprBtnPlay',
     );
-
+    
     this.btnPlay.setOrigin(0.5);
     this.btnPlay.setInteractive();
     this.btnPlay.on('pointerup', function () {
       this.btnPlay.setTexture('sprBtnPlay');
       this.scene.start('SceneMain');
+      this.song.stop()
     }, this);
 
     this.backgrounds = [];
@@ -56,6 +59,7 @@ export default class SceneGameOver extends Phaser.Scene {
       this.userName = input.value;
       this.submit = setScores(this.userName, this.scores[0]);
       this.submit.then(() => {
+        this.song.stop()
         this.scene.start('SceneLeaderBoard');
       });
       input.value = '';

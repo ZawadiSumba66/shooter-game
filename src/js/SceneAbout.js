@@ -7,6 +7,8 @@ export default class SceneAbout extends Phaser.Scene {
   }
 
   create() {
+    this.song = this.sound.add('song', { volume: 0.1, loop: true });
+    this.song.play();
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'ABOUT', {
       fontFamily: 'monospace',
       fontSize: 48,
@@ -46,6 +48,7 @@ export default class SceneAbout extends Phaser.Scene {
     this.btnPlay.on('pointerup', function () {
       this.btnPlay.setTexture('sprBtnPlay');
       this.scene.start('SceneMain');
+      this.song.stop()
     }, this);
 
 

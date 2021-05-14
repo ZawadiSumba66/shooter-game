@@ -6,7 +6,7 @@ import sndBtnOver from '../assets/sndBtnOver.mp3';
 import sndBtnDown from '../assets/sndBtnDown.mp3';
 import ScrollingBackground from '../entities/SrollingBackground';
 import sprBg0 from '../assets/spr_stars02.png';
-
+import song from '../assets/juhani.mp3';
 export default class SceneMainMenu extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneMainMenu' });
@@ -19,9 +19,13 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.load.image('sprBtnAbout', About);
     this.load.audio('sndBtnOver', sndBtnOver);
     this.load.audio('sndBtnDown', sndBtnDown);
+    this.load.audio('song', song);
   }
 
   create() {
+    this.song = this.sound.add('song', { volume: 0.1, loop: true });
+    this.song.play();
+
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
@@ -66,17 +70,20 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.btnPlay.on('pointerup', function () {
       this.btnPlay.setTexture('sprBtnPlay');
       this.scene.start('SceneMain');
+      this.song.stop()
     }, this);
 
     this.btnCredits.on('pointerup', function () {
       this.btnPlay.setTexture('sprBtnCredits');
       this.scene.start('SceneLeaderBoard');
+      this.song.stop()
     }, this);
 
 
     this.btnAbout.on('pointerup', function () {
       this.btnPlay.setTexture('sprBtnAbout');
       this.scene.start('SceneAbout');
+      this.song.stop()
     }, this);
   }
 }

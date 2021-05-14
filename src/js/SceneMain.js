@@ -17,6 +17,8 @@ import sprPlayer from '../assets/sprPlayer.png';
 import sndExplode0 from '../assets/sndExplode0.mp3';
 import sndExplode1 from '../assets/sndExplode1.mp3';
 import sndLaser from '../assets/sndLaser.mp3';
+import song from '../assets/juhani.mp3';
+
 
 export default class SceneMain extends Phaser.Scene {
   constructor() {
@@ -25,7 +27,6 @@ export default class SceneMain extends Phaser.Scene {
 
   preload() {
     this.load.image('sprBg0', sprBg0);
-    // this.load.image("sprBg1", "assets/sprBg1.png");
     this.load.spritesheet('sprExplosion', sprExplosion, {
       frameWidth: 32,
       frameHeight: 32,
@@ -48,18 +49,12 @@ export default class SceneMain extends Phaser.Scene {
     this.load.audio('sndExplode0', sndExplode0);
     this.load.audio('sndExplode1', sndExplode1);
     this.load.audio('sndLaser', sndLaser);
+    this.load.audio('song', song);
   }
 
   create() {
-    //   scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fff'}, {
-    //   fontFamily: 'monospace',
-    //   fontSize: 48,
-    //   fontStyle: 'bold',
-    //   color: '#fb8500',
-    //   align: 'center'
-    // });
-
-
+    this.song = this.sound.add('song', { volume: 0.1, loop: true });
+    this.song.play();
     this.anims.create({
       key: 'sprEnemy0',
       frames: this.anims.generateFrameNumbers('sprEnemy0'),
@@ -96,7 +91,7 @@ export default class SceneMain extends Phaser.Scene {
       laser: this.sound.add('sndLaser'),
     };
     this.backgrounds = [];
-    for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
+    for (let i = 0; i < 5; i += 1) {
       const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
       this.backgrounds.push(bg);
     }
@@ -145,6 +140,7 @@ export default class SceneMain extends Phaser.Scene {
         player.explode(false);
         enemy.explode(true);
         player.onDeath();
+        this.song.stop();
       }
     });
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
@@ -153,6 +149,7 @@ export default class SceneMain extends Phaser.Scene {
         player.explode(false);
         laser.destroy();
         player.onDeath();
+        this.song.stop();
       }
     });
     this.time.addEvent({
